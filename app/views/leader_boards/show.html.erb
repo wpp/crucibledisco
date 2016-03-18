@@ -1,0 +1,36 @@
+<div class="pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading">#crucible elos</a>
+    <ul class="pure-menu-list">
+        <% LeaderBoard::MODE_MAP.each do |id, mode| %>
+          <li class="pure-menu-item <%= mode == @leader_board.name ? 'pure-menu-selected' : ''%>">
+            <a href="<%= leader_board_path(id) %>" class="pure-menu-link"><%= mode %></a>
+          </li>
+        <% end %>
+    </ul>
+</div>
+
+<div class="pure-g">
+  <div class="pure-u-1-1">
+    <table class="pure-table leaderboard">
+      <thead>
+        <tr>
+          <td>Rank</td>
+          <td>Gamertag</td>
+          <td>Platform</td>
+          <td><%= sortable 'elo' %></td>
+          <td><%= sortable 'games_played' %></td>
+        </tr>
+      </thead>
+
+      <% @leader_board.ratings.each_with_index do |rating, i| %>
+        <tr class="<%= i % 2 != 0 ? 'pure-table-odd' : '' %>">
+          <td><%= i + 1 %></td>
+          <td><%= rating.user.gamertag %></td>
+          <td><%= rating.user.platform_id == 1 ? 'xbox' : 'psn' %></td>
+          <td><%= rating.elo %></td>
+          <td><%= rating.games_played %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
