@@ -28,3 +28,5 @@ Bigger things:
 - Automate pulling new rankings
 - Track rankings on weekly/reset basis, to make
   comparisions, trends (last week elo vs this week etc)
+
+ASDFASDFASDF
